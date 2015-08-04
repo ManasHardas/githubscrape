@@ -3,7 +3,7 @@ import scrapy
 import requests
 import unicodedata
 from bs4 import BeautifulSoup
-from ..data.github.docker.urls import df_repo_urls_with_kw_docker_2011_to_2015
+from data.github.docker.urls import df_repo_urls_with_kw_docker_2011_to_2015
 
 
 class DockerfileSpider(scrapy.Spider):
