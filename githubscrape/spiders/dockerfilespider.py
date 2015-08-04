@@ -25,7 +25,7 @@ class DockerfileSpider(scrapy.Spider):
             filename = make_dockerfile_name_from_pagetitle(title_str)
             # print filename
 
-            _filepath = r'../scraped/dockerfiles/' + filename
+            _filepath = r'../../scraped/dockerfiles/' + filename
             f = open(_filepath, 'w')
             f.write('NAME ' + filename + '\n')
 
