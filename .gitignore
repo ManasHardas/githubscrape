@@ -1,0 +1,11 @@
+# Scraped dockerfiles
+scraped/*
+
+# Repo urls
+data/github/*
+
+# Python compiled binaries
+*.pyc
+
+# Mac generated binaries
+*DS_Store*
