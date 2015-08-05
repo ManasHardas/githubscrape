@@ -2,7 +2,7 @@ import pandas
 from pandas.core.series import Series
 from pandas.core.frame import DataFrame
 
-data_files_path = 'data/github'
+data_files_path = 'data/github/'
 
 repos_with_kw_docker_2011_to_2014_filepath = data_files_path + \
     'repos_with_docker_2011_to_2014.csv'
@@ -29,3 +29,7 @@ df_repo_urls_with_kw_docker_2011_to_2015 = \
         df_github_repos_with_kw_docker_2015,
         ignore_index=True
     )
+
+
+def make_sample_dataset():
+    return df_repo_urls_with_kw_docker_2011_to_2015[:10]
