@@ -1,32 +1,32 @@
-# -*- coding: utf-8 -*-
-import scrapy
+from scrapy.contrib.spiders import CrawlSpider, Rule
+from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor
 import requests
 import unicodedata
 from bs4 import BeautifulSoup
-from data.github.docker.urls import df_repo_urls_with_kw_docker_2011_to_2015
+# from data.github_docker_urls import df_repo_urls_with_kw_docker_2011_to_2015
 
 
-class DockerfileSpider(scrapy.Spider):
+class DockerfileSpider(CrawlSpider):
     name = "dockerfilespider"
     allowed_domains = ["github.com"]
     # start_urls = df_repo_urls_with_kw_docker_2011_to_2015
-    start_urls = 'https://github.com/grokkerlab/celery27'
+    start_urls = [
+        'https://github.com/bluk/docker-consul-haproxy/blob/master/Dockerfile'
+        ]
 
-    def parse(self, response):
+    def parse_dockerfile(self, response):
                 # only parse dockerfile pages; rest ignore
         soup = BeautifulSoup(response.body, 'html.parser')
-
-        title_uni = soup.title.get_text()
+        title_uni = soup.head.title.get_text()
         title_str = uni_to_str(title_uni)
+        print 'PAGE TITLE: ', title_str
 
-        if 'Dockerfile' not in title_str:
-            pass
-        else:
+        if 'Dockerfile' in title_str:
             filename = make_dockerfile_name_from_pagetitle(title_str)
-            # print filename
+            print 'DOCKERFILE NAME: ', filename
 
-            _filepath = r'../../scraped/dockerfiles/' + filename
-            f = open(_filepath, 'w')
+            _filepath = r'scraped/dockerfiles/' + filename
+            f = open(_filepath, 'a')
             f.write('NAME ' + filename + '\n')
 
             for line in soup.find_all('td'):
