@@ -31,5 +31,8 @@ df_repo_urls_with_kw_docker_2011_to_2015 = \
     )
 
 
-def make_sample_dataset():
-    return df_repo_urls_with_kw_docker_2011_to_2015[:10]
+def make_test_dataset(**kwargs):
+    samplesize = kwargs['sample_size']
+    testdf = df_repo_urls_with_kw_docker_2011_to_2015[:samplesize]
+    # print testdf['repository_url'].drop_duplicates().values.tolist()
+    return testdf['repository_url'].drop_duplicates().values.tolist()
