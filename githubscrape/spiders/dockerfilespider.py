@@ -16,11 +16,11 @@ class DockerfileSpider(CrawlSpider):
 
     rules = (Rule(
         LinkExtractor(
-            allow=('/blob/master/(.*?)Dockerfile(.*?)$', ),
+            allow=('(.*?)Dockerfile(.*?)$', ),
         ),
         callback='parse_dockerfile',
         follow=True
-        ),
+    ),
     )
 
     def parse_dockerfile(self, response):
