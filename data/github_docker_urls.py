@@ -21,8 +21,8 @@ def apiurl_to_repourl(apiurl):
 
 df_repos_2015 = pandas.read_csv(repos_with_kw_docker_2015_filepath)['repo_url']
 df_github_repos_with_kw_docker_2015 = DataFrame({
-        'repository_url': map(apiurl_to_repourl, df_repos_2015)
-    })
+    'repository_url': map(apiurl_to_repourl, df_repos_2015)
+})
 
 df_repo_urls_with_kw_docker_2011_to_2015 = \
     df_github_repos_with_kw_docker_2011_to_2014.append(
