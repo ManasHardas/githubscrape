@@ -4,5 +4,4 @@ python:
 install:
   - pip install pep8
 script:
-  - autopep8 --exclude=./githubscrape/settings.py -i -r .
   - pep8 .
