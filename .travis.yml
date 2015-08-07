@@ -4,4 +4,4 @@ python:
 install:
   - pip install pep8
 script:
-  - pep8 .
+  - pep8 --exclude=./githubscrape/settings.py .
